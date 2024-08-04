@@ -38,7 +38,7 @@ def main():
             st.error("Please provide all the required inputs: Genre 1, Genre 2, and a reference movie.")
         else:
             plot = generate_movie_plot(genre1, genre2, plot_twist, movie)
-            plot_html = markdown.markdown(plot)
+            plot_html = plot ##markdown.markdown(plot)
             st.markdown(plot_html, unsafe_allow_html=True)
 
 if __name__ == '__main__':
