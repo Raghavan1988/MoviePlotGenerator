@@ -78,5 +78,19 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# Add custom CSS to hide the GitHub icon
+st.markdown(
+    """
+    <style>
+    /* Hide the GitHub icon */
+    .viewerBadge_container__1QSob { 
+        display: none; 
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 if __name__ == '__main__':
     main()
