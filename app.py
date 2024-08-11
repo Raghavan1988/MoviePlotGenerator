@@ -47,17 +47,31 @@ def main():
             else:
                 plot = generate_movie_plot(genre1, genre2, plot_twist, movie)
                 plot_html = plot ##markdown.markdown(plot)
-                st.markdown(plot_html, unsafe_allow_html=True)
+                st.markdown(f"<div class='plot'>{plot_html}</div>", unsafe_allow_html=True)
     elif password:
         st.error("Incorrect Password. Please try again.")
 
-# Add this CSS code to the Streamlit app
+# Add custom CSS for styling
 st.markdown(
     """
     <style>
+    /* Set Verdana font and line spacing for input fields */
+    div.stTextInput div.stTextInput__input {
+        font-family: Verdana;
+        line-height: 1.5;
+    }
+
+    /* Style the button */
     div.stButton > button:first-child {
         background-color: green;
         color: white;
+        font-family: Verdana;
+    }
+
+    /* Set Verdana font and line spacing for the plot output */
+    .plot {
+        font-family: Verdana;
+        line-height: 1.5;
     }
     </style>
     """,
