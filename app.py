@@ -30,7 +30,7 @@ def main():
 
     genre1 = st.text_input("Primary Genre:")
     genre2 = st.text_input("Mix with which Genre:")
-    plot_twist = st.text_input("Gimme a Plot Twist:")
+    plot_twist = st.text_input("Gimme a Plot Twist:", placeholder="No Twist")
     movie = st.text_input("Reference Box Office Hit:")
 
     if st.button("GO"):
