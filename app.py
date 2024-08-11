@@ -11,10 +11,10 @@ client = OpenAI()
 
 # Function to generate a movie plot based on genres, optional plot twist, and a reference movie
 def generate_movie_plot(genre1, genre2, plot_twist, movie):
-    prompt = f"Create a detailed plot of a movie that would make as much BOX OFFICE revenue as the movie '{movie}'. The movie plot should be a mix of the genres '{genre1}' and '{genre2}'. Use HTML tags appropriately to mark Title and sub headings. Include a last EXPLANATION section that explains why the plot matches both genres. How is it similar to the movie mentioned in the input."
+    prompt = f"Create a detailed plot of a movie that would make as much BOX OFFICE revenue as the movie '{movie}'. The movie plot should be a mix of the genres '{genre1}' and '{genre2}'. Include a last EXPLANATION section that explains why the plot matches both genres. How is it similar to the movie mentioned in the input."
 
     if plot_twist and plot_twist != "No Twist" and plot_twist != "":
-        prompt = f"Create a detailed plot of a movie that would make as much BOX OFFICE revenue as the movie '{movie}'. The movie plot should be a mix of the genres '{genre1}' and '{genre2}'. If provided, include a plot twist: '{plot_twist}'. Use HTML tags appropriately to mark Title and sub headings. Include a last section that explains why the plot matches both genres and how the plot twist is incorporated, and how it is similar to the movie mentioned in the input."
+        prompt = f"Create a detailed plot of a movie that would make as much BOX OFFICE revenue as the movie '{movie}'. The movie plot should be a mix of the genres '{genre1}' and '{genre2}'. If provided, include a plot twist: '{plot_twist}'.  Include a last section that explains why the plot matches both genres and how the plot twist is incorporated, and how it is similar to the movie mentioned in the input."
     
     response = client.chat.completions.create(
         model="gpt-4o",
