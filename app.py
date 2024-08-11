@@ -33,7 +33,7 @@ def main():
     plot_twist = st.text_input("Gimme a Plot Twist:")
     movie = st.text_input("Reference Box Office Hit:")
 
-    if st.button("Generate Movie Plot"):
+    if st.button("GO"):
         if not genre1 or not genre2 or not movie:
             st.error("Please provide all the required inputs: Genre 1, Genre 2, and a reference movie.")
         else:
