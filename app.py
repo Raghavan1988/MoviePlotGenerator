@@ -26,7 +26,7 @@ def generate_movie_plot(genre1, genre2, plot_twist, movie):
 
 # Streamlit app
 def main():
-    st.title("Movie Plot Generator")
+    st.title("NoirCat Writes Movie Plots")
 
     genre1 = st.text_input("Enter Genre 1:")
     genre2 = st.text_input("Enter Genre 2:")
