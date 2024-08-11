@@ -41,6 +41,20 @@ def main():
             plot_html = plot ##markdown.markdown(plot)
             st.markdown(plot_html, unsafe_allow_html=True)
 
+# Add this CSS code to the Streamlit app
+st.markdown(
+    """
+    <style>
+    div.stButton > button:first-child {
+        background-color: green;
+        color: white;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 if __name__ == '__main__':
     main()
 
