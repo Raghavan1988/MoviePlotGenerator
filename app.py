@@ -11,10 +11,10 @@ client = OpenAI()
 
 # Function to generate a movie plot based on genres, optional plot twist, and a reference movie
 def generate_movie_plot(genre1, genre2, plot_twist, movie):
-    prompt = f"Create a detailed plot of a movie that would make as much BOX OFFICE revenue as the movie '{movie}'. Generate a catchy rhyming Title.  The movie plot should be a mix of the genres '{genre1}' and '{genre2}'. Include a last EXPLANATION section that explains why the plot matches both genres. How is it similar to the movie mentioned in the input."
+    prompt = f"Create a detailed plot of a movie that would make as much BOX OFFICE revenue as the movie '{movie}'. Generate a catchy rhyming Title. The movie plot should be a mix of the genres '{genre1}' and '{genre2}'. Include a last EXPLANATION section that explains why the plot matches both genres. How is it similar to the movie mentioned in the input."
 
     if plot_twist and plot_twist != "No Twist" and plot_twist != "":
-        prompt = f"Create a detailed plot of a movie that would make as much BOX OFFICE revenue as the movie '{movie}'. Generate a catchy rhyming Title.  The movie plot should be a mix of the genres '{genre1}' and '{genre2}'. If provided, include a plot twist: '{plot_twist}'.  Include a last section that explains why the plot matches both genres and how the plot twist is incorporated, and how it is similar to the movie mentioned in the input."
+        prompt = f"Create a detailed plot of a movie that would make as much BOX OFFICE revenue as the movie '{movie}'. Generate a catchy rhyming Title. The movie plot should be a mix of the genres '{genre1}' and '{genre2}'. If provided, include a plot twist: '{plot_twist}'. Include a last section that explains why the plot matches both genres and how the plot twist is incorporated, and how it is similar to the movie mentioned in the input."
     
     response = client.chat.completions.create(
         model="gpt-4o",
@@ -31,11 +31,19 @@ def generate_movie_plot(genre1, genre2, plot_twist, movie):
 def main():
     st.title("NoirCat Writes Movie Plots")
 
-    # Password input
-    password = st.text_input("Enter Password", type="password")
+    # Initialize session state to track whether the password is correct
+    if "authenticated" not in st.session_state:
+        st.session_state.authenticated = False
 
-    # Check if the password is correct
-    if password == "IamCool4202!" or password == "Raghavan":
+    if not st.session_state.authenticated:
+        password = st.text_input("Enter Password", type="password")
+        if st.button("Submit"):
+            if password == "IamCool4202!" or password == "Raghavan":
+                st.session_state.authenticated = True
+            else:
+                st.error("Incorrect Password. Please try again.")
+    
+    if st.session_state.authenticated:
         genre1 = st.text_input("Primary Genre:")
         genre2 = st.text_input("Mix with which Genre:")
         plot_twist = st.text_input("Gimme a Plot Twist:", placeholder="No Twist")
@@ -48,8 +56,6 @@ def main():
                 plot = generate_movie_plot(genre1, genre2, plot_twist, movie)
                 plot_html = plot
                 st.markdown(f"<div class='plot'>{plot_html}</div>", unsafe_allow_html=True)
-    elif password:
-        st.error("Incorrect Password. Please try again.")
 
 # Add custom CSS for styling
 st.markdown(
