@@ -31,19 +31,11 @@ def generate_movie_plot(genre1, genre2, plot_twist, movie):
 def main():
     st.title("NoirCat Writes Movie Plots")
 
-    # Initialize session state to track whether the password is correct
-    if "authenticated" not in st.session_state:
-        st.session_state.authenticated = False
+    # Password input
+    password = st.text_input("Enter Password", type="password")
 
-    if not st.session_state.authenticated:
-        password = st.text_input("Enter Password", type="password")
-        if st.button("Submit"):
-            if password == "IamCool4202!" or password == "Raghavan":
-                st.session_state.authenticated = True
-            else:
-                st.error("Incorrect Password. Please try again.")
-    
-    if st.session_state.authenticated:
+    # Check if the password is correct
+    if password == "IamCool4202!" or password == "Raghavan":
         genre1 = st.text_input("Primary Genre:")
         genre2 = st.text_input("Mix with which Genre:")
         plot_twist = st.text_input("Gimme a Plot Twist:", placeholder="No Twist")
@@ -56,6 +48,8 @@ def main():
                 plot = generate_movie_plot(genre1, genre2, plot_twist, movie)
                 plot_html = plot
                 st.markdown(f"<div class='plot'>{plot_html}</div>", unsafe_allow_html=True)
+    elif password:
+        st.error("Incorrect Password. Please try again.")
 
 # Add custom CSS for styling
 st.markdown(
