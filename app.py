@@ -35,7 +35,7 @@ def main():
     password = st.text_input("Enter Password", type="password")
 
     # Check if the password is correct
-    if password == "IamCool4202!":
+    if password == "IamCool4202!" or password == "Raghavan":
         genre1 = st.text_input("Primary Genre:")
         genre2 = st.text_input("Mix with which Genre:")
         plot_twist = st.text_input("Gimme a Plot Twist:", placeholder="No Twist")
