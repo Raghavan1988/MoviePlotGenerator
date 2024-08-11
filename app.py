@@ -28,10 +28,10 @@ def generate_movie_plot(genre1, genre2, plot_twist, movie):
 def main():
     st.title("NoirCat Writes Movie Plots")
 
-    genre1 = st.text_input("Enter Genre 1:")
-    genre2 = st.text_input("Enter Genre 2:")
-    plot_twist = st.text_input("Optional: Enter a Plot Twist:")
-    movie = st.text_input("Enter a reference movie that made a lot of money:")
+    genre1 = st.text_input("Primary Genre:")
+    genre2 = st.text_input("Mix with which Genre:")
+    plot_twist = st.text_input("Gimme a Plot Twist:")
+    movie = st.text_input("Reference Box Office Hit:")
 
     if st.button("Generate Movie Plot"):
         if not genre1 or not genre2 or not movie:
